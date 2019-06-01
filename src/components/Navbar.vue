@@ -29,6 +29,7 @@
 
 
     <!--Displayed only on large screens-->
+    <router-link to="/">
     <v-avatar
           :tile="tile"
           :size="avatarSize"
@@ -37,6 +38,7 @@
         >
           <img src="@/assets/shopping-cart.png" alt="avatar">
     </v-avatar>
+    </router-link>
 
     <v-toolbar-title class="text-uppercase grey--text">
       <span class="font-weight-light">Shopping</span>
