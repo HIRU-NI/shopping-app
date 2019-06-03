@@ -6,7 +6,10 @@
         app 
         class="hidden-md-and-up" 
         dense
+        temporary
         absolute
+        dark
+        color="primary"
         >
             <v-list
             v-for = "item in menuItems" 
@@ -23,9 +26,9 @@
             </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar light flat dense color="grey lighten-3">
+    <v-toolbar  flat color="#1b2030 " fixed>
     <!--Displayed only on small screens-->
-    <v-toolbar-side-icon  class="hidden-md-and-up" @click="sideNav = !sideNav"></v-toolbar-side-icon>
+    <v-toolbar-side-icon  class="hidden-md-and-up" @click="sideNav = !sideNav" dark></v-toolbar-side-icon>
 
 
     <!--Displayed only on large screens-->
@@ -40,7 +43,7 @@
     </v-avatar>
     </router-link>
 
-    <v-toolbar-title class="text-uppercase grey--text">
+    <v-toolbar-title class="text-uppercase white--text">
       <span class="font-weight-light">Shopping</span>
     </v-toolbar-title>
 
@@ -53,11 +56,11 @@
             :key="item.title">
       <v-btn 
       flat 
-      color="grey darken-1"
+      color="white"
       router 
       :to="item.route">
       <span class="hidden-md-and-down">{{item.title}}</span>
-      <v-icon right color="primary">{{item.icon}}</v-icon>
+      <v-icon right color="white">{{item.icon}}</v-icon>
     </v-btn>
     </v-toolbar-items>  
   </v-toolbar>
