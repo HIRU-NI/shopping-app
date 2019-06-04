@@ -7,8 +7,8 @@
                     <v-card class="ma-3 grey lighten-3"  flat hover ripple :to="'/products/' + product.productId">
                         <v-layout row wrap>
                             <v-flex xs12 md4>
-                                <v-responsive contain height="250px" class="ma-2">
-                                    <v-img :src="product.imgUrl" contain></v-img>
+                                <v-responsive contain  class="ma-2">
+                                    <v-img :src="product.images[0]" contain></v-img>
                                 </v-responsive>
                             </v-flex>  
                             <v-flex xs12 md8>

@@ -4,14 +4,19 @@
             <h1 class="grey--text mx-3">{{product.name}}</h1>
             <v-layout row wrap>
                 <v-flex xs12>
-                    <v-card class="ma-3 grey lighten-3"  flat >
+                    <v-card class="ma-3"  flat>
                         <v-layout row wrap>
-                            <v-flex xs12 md4>
-                                <v-responsive contain class="ma-2">
-                                    <v-img :src="product.imgUrl" contain></v-img>
-                                </v-responsive>
+                            <v-flex xs12 md5>
+                                <v-carousel light>
+                                    <v-carousel-item
+                                    v-for="(image,i) in product.images"
+                                    :key="i"
+                                    :src="image"
+                                    contain
+                                    ></v-carousel-item>
+                                </v-carousel>
                             </v-flex>  
-                            <v-flex xs12 md8>
+                            <v-flex xs12 md7>
                                 <v-card-title>
                                     <h1 class="font-weight-light">{{product.name}}</h1>    
                                 </v-card-title>    
