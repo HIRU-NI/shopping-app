@@ -1,7 +1,6 @@
 <template>
     <div>
         <v-container class=" my-5">
-            <h1 class="grey--text mx-3 display-2">Catalog</h1>
             <v-layout row wrap>
                 <v-flex xs12 sm6 md4 lg3 v-for="product in products" :key="product.productId"> 
                     <v-card class="text-xs-center ma-3 grey lighten-3" hover flat ripple :to="'/products/' + product.productId">
@@ -38,11 +37,15 @@ export default {
     computed: {
         products() {
             return this.$store.getters.loadedProducts 
+        },
+        cart() {
+            return this.$store.getters.getCartItems
         }
     },
     methods: {
-        addToCart(product) {         
-            this.$store.commit('addToCart',product)
+        addToCart(product) {   
+            let p = Object.assign({}, product)
+            this.$store.commit('addToCart',p)
         }
     },
 }

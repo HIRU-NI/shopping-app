@@ -86,7 +86,7 @@ export default {
   },
   computed: {
       noOfItems() {
-        return this.$store.amountInCart
+        return this.$store.getters.getCartCount
       }
   }
 }

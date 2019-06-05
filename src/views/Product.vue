@@ -34,7 +34,7 @@
                                     <v-icon dark>remove</v-icon>
                                 </v-btn>
                                 <v-layout class="pt-5">
-                                    <v-btn color="primary" large @click="addToCart">Add to Cart</v-btn>
+                                    <v-btn color="primary" large @click="addToCart()">Add to Cart</v-btn>
                                     <v-btn color="primary"  large >Buy Now</v-btn>
                                 </v-layout> 
                             </v-flex>  
@@ -50,7 +50,7 @@
 export default {
     data() {
         return {
-            quantity: 1 
+            quantity: 1,
         }
     },
     props: ['productId'],
@@ -69,12 +69,11 @@ export default {
         dec() {
             this.quantity--
         },
-        addToCart() {         
-            this.product.quantity += this.quantity -1
-            this.product.totalPrice = this.product. quantity*this.product.price
+        addToCart() {    
+            let p = Object.assign({}, this.product)
+            p.quantity = this.quantity  
+            this.$store.commit('addToCart',p)
             this.quantity = 1
-            console.log(this.product)
-            this.$store.commit('addToCart',this.product)
         }
     },
 }
