@@ -3,7 +3,7 @@
         <v-container class="my-5">
             <h1 class="grey--text mx-3 display-2">Cart</h1>
             <v-layout row wrap>
-                <v-flex v-for="product in products" :key="product.productId" xs12 sm6>
+                <v-flex v-for="product in products" :key="product.productId" xs12 md6>
                     <v-card class="ma-3 grey lighten-3"  flat hover  :to="'/products/' + product.productId">
                         <v-layout row wrap>
                             <v-flex xs12 md4>
@@ -40,25 +40,27 @@
             </v-layout>  
             <v-layout class="ma-3">
                 <v-flex xs12> 
-                    <v-card class="pa-4 grey lighten-2 " flat>
-                        <h1 class="font-weight-light">Chekout</h1>
-                        <v-card class="pa-5 ma-5 grey lighten-1">
-                                <v-layout>
-                                    <v-flex xs12 sm6>
-                                        <v-card-title>
-                                            <h1 class="font-weight-light">Amount: ${{total}}</h1>    
-                                        </v-card-title>    
-                                        <v-card-text>
-                                            <h2 class="font-weight-light">Tax rate: {{tax}}</h2>
-                                            <h2 class="font-weight-light">Total Amount: ${{total*tax}}</h2>
-                                        </v-card-text>
-                                    </v-flex>
-                                    <v-flex xs12 sm6 class="pa-5">
-                                        <v-btn color="primary"  large >Proceed</v-btn>
-                                    </v-flex>
-                                </v-layout>
-                        </v-card>   
-                    </v-card>
+                    <v-img src="https://pngimage.net/wp-content/uploads/2018/05/empty-cart-png.png" position="center" height="500px" contain v-if="isCartEmpty"></v-img>   
+                    <v-card class="pa-3  grey lighten-1 ma-5" >
+                        <v-layout row wrap>
+                            <v-flex xs12 sm6>
+                                <v-card-title>
+                                    <h1 class="font-weight-light">Total Amount: ${{(total).toFixed(2)}}</h1>    
+                                </v-card-title>    
+                                <v-card-text>
+                                    <h2 class="font-weight-light">Tax Amount: ${{(taxAmount).toFixed(2)}}</h2>
+                                    <h2 class="font-weight-light" v-if="isDiscount">Discount: ${{(discountAmount).toFixed(2)}}</h2>
+                                    <hr/>
+                                    <h2 class="font-weight-light">Bill Amount: ${{(billAmount).toFixed(2)}}</h2>
+                                </v-card-text>
+                            </v-flex>
+                            <v-flex xs12 md6 class="pa-5">
+                                <v-btn color="primary"  large v-if="!isCartEmpty" >Proceed</v-btn>
+                            </v-flex>
+                        </v-layout>
+                    </v-card>   
+
+                    
                 </v-flex>
             </v-layout>
         </v-container>
@@ -69,7 +71,8 @@
 export default {
     data() {
         return {
-            tax: 1.2, 
+            taxRate: 1.12,
+            discountRate: 0.02,
         }
     },
     computed: {
@@ -78,6 +81,26 @@ export default {
         },
         total() {
             return this.$store.getters.getTotalPrice
+        },
+        taxAmount() {
+            return this.total * this.taxRate
+        },
+        isDiscount() {
+            return this.total > 5
+        },
+        discountAmount() {
+            return this.total *  this.discountRate
+        },
+        billAmount() {
+            const amount = this.total+ this.taxAmount
+            if(this.isDiscount) {
+                return amount - this.discountAmount
+            }
+            return amount
+        },
+        isCartEmpty() {
+            const amount = this.$store.getters.getCartCount
+            return amount == 0
         }
     },
     methods: {

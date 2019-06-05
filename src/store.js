@@ -22,6 +22,7 @@ export const  store = new Vuex.Store({
             },
             {
                 name: 'T-Shirt', 
+                description: 'embark Tshirt, Homme Tshirt Noir, Mens Tshirt black, Cadeau, Gift',
                 productId: '4baxc7nh98', 
                 seller: 'Embark', 
                 price: 20,
@@ -35,6 +36,7 @@ export const  store = new Vuex.Store({
             },
             {
                 name: 'Pants', 
+                description: 'Womens Elastic Waist Pencil Stretch Denim Skinny Drawstring Jeans Pants Trousers',
                 productId: '4baxc7nh78', 
                 seller: 'Online-jeans', 
                 price: 40,
@@ -49,6 +51,7 @@ export const  store = new Vuex.Store({
                 },
             {
                 name: 'Mug', 
+                description: 'Personalised Marble / Pattern Mug. Add a name for a unique custom gift cu',
                 productId: '4baxc7kd32', 
                 seller: 'Odel', 
                 price: 10,
@@ -61,6 +64,7 @@ export const  store = new Vuex.Store({
                  },
             {
                 name: 'Dress', 
+                description: "Women's Bandage Bodycon Sleeveless Evening Party Cocktail Club Short Mini Dress",
                 productId: '4baxc7986e', 
                 seller: 'Fashion Bug', 
                 price: 50,
@@ -74,6 +78,7 @@ export const  store = new Vuex.Store({
                 },
             {
                 name: 'Water Bottle', 
+                description: '500ML Outdoor Portable Sport Cycling Camping Bicycle Aluminum Alloy Water Bottle',
                 productId: '4baxc745ew', 
                 seller: 'Little Lion', 
                 price: 15,
@@ -84,6 +89,33 @@ export const  store = new Vuex.Store({
                     'https://i1.wp.com/gemzandgrace.com/wp-content/uploads/2018/05/BottleFushia.jpg?fit=1080%2C1440&ssl=1',
                     'http://assets.myntassets.com/assets/images/8003191/2019/2/12/f13a13e7-895d-4fe0-8356-bc0e0a25008a1549964043410-Nike-Unisex-Pink-Printed-HPERCHARGE-SS-Water-Bottle-710ml-52-1.jpg'
                 ],
+                },
+                {
+                    name: 'Handbag', 
+                    description: 'Women Crossbody Handbag Ladies Leather Bag Shoulder Bag Tote Messenger Purse Hot',
+                    productId: '4baxc778uy', 
+                    seller: 'Kooves', 
+                    price: 20,
+                    quantity: 1,
+                    totalPrice: 20,
+                    images: [
+                        'https://images.koovs.com/uploads//products/120520_8ddc0764de6625bc0840c486d03eeba2_image1_zoom.jpg',
+                        'https://cdn.shopify.com/s/files/1/1110/1342/products/IMG_1706.jpg?v=1510988459',
+                    ],
+                },
+                {
+                    name: 'Wallet', 
+                    description: 'Men Slim Leather Bifold ID Credit Card Wallet with Removable Money Clip',                   
+                    productId: '4baxc789hj', 
+                    seller: 'Rolex', 
+                    price: 30,
+                    quantity: 1,
+                    totalPrice: 30,
+                    images: [
+                        'https://cdn.staticans.com/image/tr:h-1440,w-1080,cm-pad_resize/data/being-human/images/2-19-19/831356-1.jpg',
+                        'https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/7030265/2019/1/30/f87ad114-96b0-4419-891e-24388d5e097e1548827807028-Woodland-Men-Wallets-4491548827805810-2.jpg',
+                        'https://images-na.ssl-images-amazon.com/images/I/71GAw4Rt7SL._SL1440_.jpg'
+                    ],
                 },
         ],
         cart: [],
@@ -106,10 +138,10 @@ export const  store = new Vuex.Store({
         },
         removeFromCart (state, productId) {
             var product = state.cart.find(product => {
-                return product.productId == productId;
+                return product.productId == productId
               });
               if (product) {
-                state.totalPrice -= product.totalPrice;
+                state.totalPrice -= product.totalPrice
                 state.cart.splice(state.cart.indexOf(product), 1);
               }        
         },
