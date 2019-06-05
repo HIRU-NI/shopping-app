@@ -19,7 +19,7 @@
                         </v-card-actions>
                     </v-card>
                         <v-layout justify-space-around>
-                            <v-btn color="primary" large round left outline flat @click.prevent="addToCart(product.productId)">Add to Cart</v-btn>
+                            <v-btn color="primary" large round left outline flat @click.prevent="addToCart(product)">Add to Cart</v-btn>
                             <v-btn color="primary" large round left outline flat >Buy Now</v-btn>
                         </v-layout>
                         
@@ -41,9 +41,7 @@ export default {
         }
     },
     methods: {
-        addToCart(productId) {
-            const product = this.$store.getters.loadedProduct(productId)
-
+        addToCart(product) {         
             this.$store.commit('addToCart',product)
         }
     },

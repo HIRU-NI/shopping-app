@@ -43,7 +43,7 @@
     </v-avatar>
     </router-link>
 
-    <v-toolbar-title class="text-uppercase white--text">
+    <v-toolbar-title class="text-uppercase primary--text">
       <span class="font-weight-light">Shopping</span>
     </v-toolbar-title>
 
@@ -56,11 +56,16 @@
             :key="item.title">
       <v-btn 
       flat 
-      color="white"
+      color="primary"
       router 
       :to="item.route">
       <span class="hidden-md-and-down">{{item.title}}</span>
-      <v-icon right color="white">{{item.icon}}</v-icon>
+      <v-icon right color="primary">{{item.icon}}</v-icon>
+      <v-badge overlap color="none">
+            <template v-slot:badge v-if="item.title == 'My Cart'">
+              <span>{{ noOfItems }}</span>
+            </template>
+      </v-badge>
     </v-btn>
     </v-toolbar-items>  
   </v-toolbar>
@@ -79,6 +84,11 @@ export default {
       ]
     }
   },
+  computed: {
+      noOfItems() {
+        return this.$store.amountInCart
+      }
+  }
 }
 </script>
 
