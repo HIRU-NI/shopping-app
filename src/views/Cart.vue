@@ -99,7 +99,7 @@ export default {
             return amount
         },
         isCartEmpty() {
-            const amount = this.$store.getters.getCartCount
+            const amount = this.$store.getters.getCartCount 
             return amount == 0
         }
     },
