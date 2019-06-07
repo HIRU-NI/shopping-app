@@ -71,7 +71,7 @@
 export default {
     data() {
         return {
-            taxRate: 1.12,
+            taxRate: 0.12,
             discountRate: 0.02,
         }
     },
@@ -94,7 +94,7 @@ export default {
         billAmount() {
             const amount = this.total+ this.taxAmount
             if(this.isDiscount) {
-                return amount - this.discountAmount
+                return amount * (1- this.discountRate)
             }
             return amount
         },
